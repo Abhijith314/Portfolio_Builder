@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Portfolio</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-color: #ff6b6b;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            padding-top: 80px;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .form-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .form-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            display: block;
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section h3 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-section h3 i {
+            margin-right: 10px;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+
+        .btn-custom {
+            background: var(--secondary-color);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .btn-custom:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            color: white;
+        }
+
+        .btn-generate {
+            background: #667eea;
+            margin-top: 10px;
+        }
+
+        .btn-generate:hover {
+            background: #5a6fd1;
+        }
+
+        @media (max-width: 768px) {
+            .form-title {
+                font-size: 2rem;
+            }
+            
+            body {
+                padding-top: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: var(--primary-gradient);">
+        <div class="container">
+            <a class="navbar-brand" href="#">Create Portfolio</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="form-container">
+            <h2 class="form-title">Build Your Portfolio</h2>
+            
+            <form id="submit-form" action="/create-portfolio" method="POST">
+                <!-- Basic Info Section -->
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i>Basic Information</h3>
+                    <input type="text" class="form-control" name="name" placeholder="Full Name" value="{{data.name}}" required>
+                    <input type="text" class="form-control" name="title" placeholder="Professional Title" value="{{data.title}}" required>
+                    <input type="text" class="form-control" name="profile_picture" placeholder="Profile Picture URL" value="{{data.profile_picture}}" required>
+                </div>
+                
+                <!-- Education Section -->
+                <div class="form-section">
+                    <h3><i class="fas fa-graduation-cap"></i>Education</h3>
+                    <h5>First Education</h5>
+                    <input type="text" class="form-control" name="program_name_1" placeholder="Degree/Program" value="{{data.program_name_1}}" required>
+                    <input type="text" class="form-control" name="program_1_university" placeholder="University/School" value="{{data.program_1_university}}" required>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="program1_year" placeholder="Years (e.g. 2018-2022)" value="{{data.program1_year}}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="program1_skills" placeholder="Skills Learned" value="{{data.program1_skills}}" required>
+                        </div>
+                    </div>
+                    
+                    <h5 class="mt-4">Second Education</h5>
+                    <input type="text" class="form-control" name="program_name_2" placeholder="Degree/Program" value="{{data.program_name_2}}" required>
+                    <input type="text" class="form-control" name="program_2_university" placeholder="University/School" value="{{data.program_2_university}}" required>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="program2_year" placeholder="Years (e.g. 2022-2024)" value="{{data.program2_year}}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="program2_skills" placeholder="Skills Learned" value="{{data.program2_skills}}" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projects Section -->
+                <div class="form-section">
+                    <h3><i class="fas fa-code"></i>Projects</h3>
+                    
+                    <h5>Project 1</h5>
+                    <input type="text" class="form-control" name="project1_name" placeholder="Project Name" value="{{data.project1_name}}" required>
+                    <input type="text" class="form-control" name="project1_description" placeholder="Project Description" value="{{data.project1_description}}" required>
+                    <input type="text" class="form-control" name="project1_skills" placeholder="Technologies Used (comma separated)" value="{{data.project1_skills}}" required>
+                    
+                    <h5 class="mt-4">Project 2</h5>
+                    <input type="text" class="form-control" name="project2_name" placeholder="Project Name" value="{{data.project2_name}}" required>
+                    <input type="text" class="form-control" name="project2_description" placeholder="Project Description" value="{{data.project2_description}}" required>
+                    <input type="text" class="form-control" name="project2_skills" placeholder="Technologies Used (comma separated)" value="{{data.project2_skills}}" required>
+                    
+                    <h5 class="mt-4">Project 3</h5>
+                    <input type="text" class="form-control" name="project3_name" placeholder="Project Name" value="{{data.project3_name}}" required>
+                    <input type="text" class="form-control" name="project3_description" placeholder="Project Description" value="{{data.project3_description}}" required>
+                    <input type="text" class="form-control" name="project3_skills" placeholder="Technologies Used (comma separated)" value="{{data.project3_skills}}" required>
+                </div>
+                
+                <!-- Contact Section -->
+                <div class="form-section">
+                    <h3><i class="fas fa-envelope"></i>Contact Information</h3>
+                    <input type="email" class="form-control" name="email" placeholder="Email Address" value="{{data.email}}" required>
+                    <input type="text" class="form-control" name="phone" placeholder="Phone Number" value="{{data.phone}}" required>
+                    <input type="text" class="form-control" name="location" placeholder="Location" value="{{data.location}}" required>
+                </div>
+                
+                <!-- About Me Section -->
+                <div class="form-section">
+                    <h3><i class="fas fa-info-circle"></i>About Me</h3>
+                    <textarea class="form-control" id="about_me_id" name="about_me" rows="5" placeholder="Tell us about yourself..." required>{{data.about_me}}</textarea>
+                    <button type="button" class="btn btn-custom btn-generate" onclick="generateAboutMe()">
+                        <i class="fas fa-magic me-2"></i>Generate with AI
+                    </button>
+                </div>
+                
+                <button type="submit" class="btn btn-custom">
+                    <i class="fas fa-paper-plane me-2"></i>Create My Portfolio
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function generateAboutMe() {
+            var about_me_input = document.getElementById('about_me_id');
+            about_me_input.value = "Generating professional summary... (please wait)";
+            generateButton = document.getElementById('submit-form').submit()
+            // In a real implementation, this would call your AI generation API
+            // For demo, we'll simulate it with sample text
+            // setTimeout(function() {
+            //     about_me_input.value = "Highly motivated software developer with experience in full-stack web development. Passionate about creating efficient, scalable applications with clean code. Strong problem-solving skills and ability to learn new technologies quickly. Team player with excellent communication skills.";
+            // }, 1500);
+        }
+    </script>
+</body>
+</html>
