@@ -67,15 +67,15 @@ def index(id):
 
             "project1_name": user_data.project1_name,
             "project1_description": user_data.project1_description,
-            "project1_skills": user_data.project1_skills.spilt(",") if "," in user_data.project1_skills else [user_data.project1_skills],
+            "project1_skills": [skill.strip() for skill in user_data.project1_skills.split(',')],
 
             "project2_name": user_data.project2_name,
             "project2_description": user_data.project2_description,
-            "project2_skills": user_data.project2_skills,
+            "project2_skills": [skill.strip() for skill in user_data.project2_skills.split(',')],
 
             "project3_name": user_data.project3_name,
             "project3_description": user_data.project3_description,
-            "project3_skills": user_data.project3_skills,
+            "project3_skills": [skill.strip() for skill in user_data.project3_skills.split(',')],
 
             "email": user_data.email,
             "location": user_data.location,
